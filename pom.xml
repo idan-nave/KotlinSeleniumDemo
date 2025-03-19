@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maven project configuration file (pom.xml)
+  Organized and ordered for clarity with descriptive comments.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- Model Version -->
+  <modelVersion>4.0.0</modelVersion>
+  
+  <!-- Parent POM: Spring Boot Starter Parent provides dependency management and common configurations -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.4.3</version>
+    <relativePath/> <!-- Lookup parent from repository -->
+  </parent>
+  
+  <!-- Project Coordinates -->
+  <groupId>com.example</groupId>
+  <artifactId>seleniumDemo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>seleniumDemo</name>
+  <description>Demo project for Spring Boot with Selenium tests for the Swag Labs site</description>
+  <url></url>
+  
+  <!-- Licenses -->
+  <licenses>
+    <license>
+      <!-- License details can be added here -->
+    </license>
+  </licenses>
+  
+  <!-- Developers -->
+  <developers>
+    <developer>
+      <!-- Developer information can be added here -->
+    </developer>
+  </developers>
+  
+  <!-- Source Code Management -->
+  <scm>
+    <connection></connection>
+    <developerConnection></developerConnection>
+    <tag></tag>
+    <url></url>
+  </scm>
+  
+  <!-- Project Properties -->
+  <properties>
+    <!-- Java and Kotlin versions -->
+    <java.version>24</java.version>
+    <kotlin.version>1.9.25</kotlin.version>
+  </properties>
+  
+  <!-- Dependencies -->
+  <dependencies>
+    <!-- Selenium Java for web automation testing -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.29.0</version>
+    </dependency>
+    
+    <!-- Spring Boot Starter provides core Spring Boot functionality -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    
+    <!-- Kotlin Reflect for runtime introspection in Kotlin -->
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-reflect</artifactId>
+    </dependency>
+    
+    <!-- Kotlin Standard Library for Kotlin language support -->
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+    
+    <!-- Spring Boot Starter Test for testing support -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Kotlin Test JUnit 5 for Kotlin testing with JUnit 5 -->
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <!-- Build Configuration -->
+  <build>
+    <!-- Specify source and test directories -->
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    
+    <!-- Plugins for build lifecycle management -->
+    <plugins>
+      <!-- Spring Boot Maven Plugin: package and run Spring Boot applications -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      
+      <!-- Kotlin Maven Plugin: compile Kotlin code with appropriate KAPT settings -->
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <configuration>
+          <jvmTarget>21</jvmTarget>
+          <args>
+            <arg>-Xjsr305=strict</arg>
+          </args>
+          <compilerPlugins>
+            <plugin>spring</plugin>
+          </compilerPlugins>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-allopen</artifactId>
+            <version>${kotlin.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      
+      <!-- Maven Compiler Plugin: compile Java sources -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>24</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
